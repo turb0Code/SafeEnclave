@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mian_graph"
+    app:startDestination="@id/MainPage">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.facebook.safeenclave.FirstFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_first">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.facebook.safeenclave.SecondFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MainPage"
+        android:name="com.facebook.safeenclave.MainPage"
+        android:label="Main Page"
+        tools:layout="@layout/main_page">
+        <action
+            android:id="@+id/action_MainPage_to_manageVaults"
+            app:destination="@id/manageVaults" />
+        <action
+            android:id="@+id/action_MainPage_to_addVault"
+            app:destination="@id/addVault" />
+        <action
+            android:id="@+id/action_MainPage_to_vaultPage"
+            app:destination="@id/vaultPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/manageVaults"
+        android:name="com.facebook.safeenclave.ManageVaults"
+        android:label="manage_vaults"
+        tools:layout="@layout/manage_vaults" >
+        <action
+            android:id="@+id/action_manageVaults_to_MainPage"
+            app:destination="@id/MainPage" />
+        <action
+            android:id="@+id/action_manageVaults_to_addVault"
+            app:destination="@id/addVault" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVault"
+        android:name="com.facebook.safeenclave.AddVault"
+        android:label="add_vault"
+        tools:layout="@layout/add_vault" >
+        <action
+            android:id="@+id/action_addVault_to_manageVaults"
+            app:destination="@id/manageVaults" />
+        <action
+            android:id="@+id/action_addVault_to_addPassword"
+            app:destination="@id/addPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPassword"
+        android:name="com.facebook.safeenclave.AddPassword"
+        android:label="add_password"
+        tools:layout="@layout/add_password" >
+        <action
+            android:id="@+id/action_addPassword_to_MainPage"
+            app:destination="@id/MainPage" />
+        <argument
+            android:name="vault_name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/vaultPage"
+        android:name="com.facebook.safeenclave.VaultPage"
+        android:label="VaultPage" >
+        <action
+            android:id="@+id/action_vaultPage_to_MainPage"
+            app:destination="@id/MainPage" />
+    </fragment>
+</navigation>
